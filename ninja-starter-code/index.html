@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-App="NinjasApp">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+    <title>Ninjas!</title>
+
+    <!--jQuery-->
+    <script type="text/javascript" charset="utf-8" src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!--Semantic UI-->
+    <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.css" />
+    <script type="text/javascript" charset="utf-8" src="bower_components/semantic-ui/dist/semantic.js"></script>
+
+    <link rel="stylesheet" href="css/style.css"/>
+  </head>
+
+  <body ng-controller="NinjasController as ninjas">
+
+    <!--Header-->
+    <div class="ui inverted masthead segment">
+      <div class="ui page grid">
+        <div class="column">
+          <div class="ui inverted blue menu">
+            <div class="header item">
+              Ninjitsu Jiu Jitsu
+            </div>
+            <div class="right menu">
+              <div class="ui mobile dropdown link item">
+                Menu
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <a class="item">Shuriken</a>
+                  <a class="item">Mizu-gomo</a>
+                  <a class="item">Saoto Hikigane</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ui information">
+            <h1 class="ui centered inverted header">
+              Become a Ninja Master
+            </h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui page grid">
+      <div class="column">
+
+        <!-- Insert title here -->
+        <h1 class="ui black header">Search Ninja Weapons</h1>
+        <div class="ui fluid icon input">
+
+          <!-- Put input here -->
+          <input type="text" ng-model="seachWeapons" placeholder="Search..."/>
+          <!-- Insert icon here -->
+          <i class="seach icon"></i>
+        </div>
+        <div class="list">
+          <ul>
+            <!-- Place ng repeat here -->
+              <li ng-repeat='weapon in ninjas.weapons | filter: searchWeapons | limitTo: 4'>
+                <p>
+                  <b>{{weapon.item | uppercase}}</b>
+                  <br />
+                </p>
+                <p>{{weapon.price | currency: "USD$"}}</p>
+                <p>{{weapon.power | number:000}}</p>
+                <br />
+
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Sourcing Angular-->
+    <script type="text/javascript" charset="utf-8" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/animate.js"></script>
+    <!-- Source in module -->
+    <script type="text/javascript" src="js/main.js"></script>
+    <!-- Source in controller -->
+    <script type="text/javascript" src="js/NinjasController.js"></script>
+    <!-- Source in customer filter -->
+
+  </body>
+</html>
